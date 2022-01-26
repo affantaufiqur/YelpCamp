@@ -1,19 +1,28 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+<% layout('layouts/boilerplate')%>
     <h1>Edit data</h1>
     <form action="/campground/<%= camp._id %>?_method=PUT" method="POST">
-        <input type="text" id="title" name="title" placeholder="title" value="<%= camp.title %> ">
-        <!-- <input type="number" id="price" name="price" placeholder="price">
-        <input type="text" id="description" name="description" placeholder="description"> -->
-        <input type="text" id="location" name="location" placeholder="location" value="<%= camp.location %> ">
-        <button>Submit</button>
+        <div class="mb-4">
+            <label for="title" class="form-label">Title</label>
+            <input class="form-control" type="text" id="title" name="title" placeholder="title" value="<%= camp.title %>">
+        </div>
+        <div class="mb-4">
+            <label for="location" class="form-label">Location</label>
+            <input class="form-control" type="text" id="location" name="location" placeholder="location" value="<%= camp.location %>">
+        </div>
+        <div class="mb-4">
+            <label for="image" class="form-label">Image</label>
+            <input class="form-control" type="text" id="image" name="image" placeholder="image URL" value="<%= camp.image %>">
+        </div>
+        <div class="mb-4">
+            <label for="price" class="form-label">Price per night</label>
+        <div class="input-group">
+            <span class="input-group-text">$</span>
+            <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)" name="price" id="price" placeholder="100" value="<%= camp.price %>">
+          </div>
+        </div>
+        <div class="mb-4">
+            <label for="description" class="form-label">Description</label>
+            <textarea class="form-control" type="text" id="description" name="description" placeholder="description"><%= camp.description %></textarea>
+        </div>
+        <button class="btn btn-success">Submit</button>
     </form>
-</body>
-</html>
