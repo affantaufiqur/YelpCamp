@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Campground = require('../models/campground');
 const cities = require('./cities');
-const { places, descriptors } = require('./seed');
+const { places, descriptors, images} = require('./seed');
 
 mongoose.connect('mongodb://127.0.0.1:27017/yelp-camp')
 .then(() => {
@@ -18,6 +18,16 @@ db.once('open', ()=>{
     console.log('db connected')
 });
 
+//take regular URL from images array and store in url array
+let url = []
+  function imageUrl(array){
+      for(let i of array){
+          const imageReguler = i.urls.regular
+          url.push(imageReguler)
+      }
+  }
+imageUrl(images);
+
 const sample = array => array[Math.floor(Math.random() * array.length)];
 
 const seedDB = async() => {
@@ -29,7 +39,7 @@ const seedDB = async() => {
         const camp = new Campground({
             title: `${sample(places)} ${sample(descriptors)}`,
             location: `${cities[random].city}, ${cities[random].state}`,
-            image: 'https://source.unsplash.com/collection/483251',
+            image: `${sample(url)}`,
             description:'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Est molestias doloribus enim error praesentium, similique odio ea eveniet, commodi impedit fugiat magni laudantium veniam a doloremque alias vero necessitatibus recusandae.',
             price
         })
