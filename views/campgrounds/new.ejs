@@ -2,29 +2,30 @@
 <a href="/campground">Back to campground</a>
 <div class="row">
 <h1 class="text-center my-3">New campground</h1>
-<div class="col-6 offset-3"><form action="/campground" method="POST">
+<div class="col-6 offset-3">
+<form action="/campground" method="POST" class="needs-validation" novalidate>
     <div class="mb-4">
         <label for="title" class="form-label">Title</label>
-        <input class="form-control" type="text" id="title" name="title" placeholder="title">
+        <input class="form-control" type="text" id="title" name="title" placeholder="title" required>
     </div>
     <div class="mb-4">
         <label for="location" class="form-label">Location</label>
-        <input class="form-control" type="text" id="location" name="location" placeholder="location">
+        <input class="form-control" type="text" id="location" name="location" placeholder="location" required>
     </div>
     <div class="mb-4">
         <label for="image" class="form-label">Image</label>
-        <input class="form-control" type="text" id="image" name="image" placeholder="image URL">
+        <input class="form-control" type="text" id="image" name="image" placeholder="image URL" required>
     </div>
     <div class="mb-4">
         <label for="price" class="form-label">Price per night</label>
     <div class="input-group">
         <span class="input-group-text">$</span>
-        <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)" name="price" id="price" placeholder="100">
+        <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)" name="price" id="price" placeholder="100" required>
       </div>
     </div>
     <div class="mb-4">
         <label for="description" class="form-label">Description</label>
-        <textarea class="form-control" type="text" id="description" name="description" placeholder="description"></textarea>
+        <textarea class="form-control" type="text" id="description" name="description" placeholder="description" required></textarea>
     </div> 
     <button class="btn btn-success">Submit</button>
 </form></div>
