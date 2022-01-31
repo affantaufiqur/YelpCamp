@@ -40,6 +40,7 @@ const seedDB = async() => {
             title: `${sample(places)} ${sample(descriptors)}`,
             location: `${cities[random].city}, ${cities[random].state}`,
             image: `${sample(url)}`,
+            user: '61f775f21893af2cafa681e1',
             description:'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Est molestias doloribus enim error praesentium, similique odio ea eveniet, commodi impedit fugiat magni laudantium veniam a doloremque alias vero necessitatibus recusandae.',
             price
         })
