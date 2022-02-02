@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Campground = require('../models/campground');
 const cities = require('./cities');
-const { places, descriptors, images} = require('./seed');
+const { places, descriptors} = require('./seed');
 
 mongoose.connect('mongodb://127.0.0.1:27017/yelp-camp')
 .then(() => {
@@ -18,16 +18,6 @@ db.once('open', ()=>{
     console.log('db connected')
 });
 
-//take regular URL from images array and store in url array
-let url = []
-  function imageUrl(array){
-      for(let i of array){
-          const imageReguler = i.urls.regular
-          url.push(imageReguler)
-      }
-  }
-imageUrl(images);
-
 const sample = array => array[Math.floor(Math.random() * array.length)];
 
 const seedDB = async() => {
@@ -39,10 +29,19 @@ const seedDB = async() => {
         const camp = new Campground({
             title: `${sample(places)} ${sample(descriptors)}`,
             location: `${cities[random].city}, ${cities[random].state}`,
-            image: `${sample(url)}`,
             user: '61f775f21893af2cafa681e1',
             description:'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Est molestias doloribus enim error praesentium, similique odio ea eveniet, commodi impedit fugiat magni laudantium veniam a doloremque alias vero necessitatibus recusandae.',
-            price
+            price,
+            images: [
+                {
+                    url : 'https://res.cloudinary.com/dbjmfhsvj/image/upload/v1643693976/YelpCamp/nh38jnbmfqsyyn42cpxn.png', 
+                    filename : 'YelpCamp/nh38jnbmfqsyyn42cpxn'
+                },
+                {
+                    url : 'https://res.cloudinary.com/dbjmfhsvj/image/upload/v1643693975/YelpCamp/hjzgnoyk8o2lk6sgv934.jpg', 
+                    filename : 'YelpCamp/hjzgnoyk8o2lk6sgv934'
+                }
+            ]
         })
         await camp.save();
     }
