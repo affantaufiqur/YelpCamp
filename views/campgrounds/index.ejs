@@ -1,4 +1,5 @@
 <% layout('layouts/boilerplate')%>
+<div id="map" class="map" style="width: 100%; height:50vh"></div>
     <h1>ww</h1>
     <a href="/campground/new">Add campground</a>
         <%for (let camps of camp){%>
@@ -8,7 +9,7 @@
                      <% if(camps.images.length) { %>
                         <img src="<%= camps.images[0].url %>" alt="" class="img-fluid rounded-start">
                     <% }else{%> 
-                        <img src="https://res.cloudinary.com/dbjmfhsvj/image/upload/v1643696065/YelpCamp/i79g6lvcinc3xlhhwx5b.jpg" alt="" class="img-fluid rounded-start"> 
+                        <img src="https://images.unsplash.com/photo-1491199967891-34b84fb35af4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwyOTQ3MTB8MHwxfGNvbGxlY3Rpb258MXwwUFM5M3MzQ2NGNHx8fHx8Mnx8MTY0MzE4MDQyMw&ixlib=rb-1.2.1&q=80&w=1080" alt="" class="img-fluid rounded-start"> 
                     <% } %>    
                         
                     </div>
@@ -19,11 +20,15 @@
                             <p class="card-text">
                                 <small class="text-muted"><%= camps.location %></small>
                             </p>
-                            <p class="card-text">$<%= camps.price %>/Night</p>
+                            <p class="card-text"><strong>$<%= camps.price %></strong>/Night</p>
                             <a href="/campground/<%= camps._id %>" class="btn btn-primary">View Details</a>
                         </div>
                     </div>
                 </div>
             </div>
        <% } %>
-    
+<script>
+    const mapToken = '<%-process.env.MAPBOX_TOKEN%>';
+    const camp = {features: <%- JSON.stringify(camp) %>}
+</script>
+<script src="clusterMap.js"></script>
