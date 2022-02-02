@@ -5,7 +5,12 @@
             <div class="card mb-3">
                 <div class="row">
                     <div class="col-md-4">
+                     <% if(camps.images.length) { %>
                         <img src="<%= camps.images[0].url %>" alt="" class="img-fluid rounded-start">
+                    <% }else{%> 
+                        <img src="https://res.cloudinary.com/dbjmfhsvj/image/upload/v1643696065/YelpCamp/i79g6lvcinc3xlhhwx5b.jpg" alt="" class="img-fluid rounded-start"> 
+                    <% } %>    
+                        
                     </div>
                     <div class="col-md-8">
                         <div class="card-body">
