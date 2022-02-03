@@ -1,6 +1,9 @@
 <% layout('layouts/boilerplate')%>
-    <h1>Edit data</h1>
-    <form class="needs-validation" action="/campground/<%= camp._id %>?_method=PUT" method="POST" enctype="multipart/form-data" novalidate>
+
+<div class="row">
+    <div class="col-md-6 offset-md-3 pb-4">
+        <h1>Edit data</h1>
+        <form class="needs-validation" action="/campground/<%= camp._id %>?_method=PUT" method="POST" enctype="multipart/form-data" novalidate>
         <div class="mb-4">
             <label for="title" class="form-label">Title</label>
             <input class="form-control" type="text" id="title" name="title" placeholder="title" value="<%= camp.title %>" required>
@@ -36,5 +39,9 @@
                 <label for=""image-<%=i%>>Delete?</label>
            <% }) %> 
         </div>
-        <button class="btn btn-success px-4 my-3">Submit</button>
-    </form>
+        <div class="d-grid">
+            <button class="btn btn-success px-5">Submit</button>
+        </div>
+        </form>
+    </div>
+</div>

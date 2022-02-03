@@ -1,17 +1,17 @@
-<nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar sticky-top navbar-expand-lg text-decoration-none ">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">YelpCamp</a>
+      <a class="navbar-brand text-dark" href="#">YelpCamp</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarNavAltMarkup">
         <div class="navbar-nav">
-          <a class="nav-link active" href="#">Home</a>
-          <a class="nav-link" href="/campground">Campground</a>
-          <a class="nav-link" href="/campground/new">New</a>
+          <a class="nav-link text-dark" href="#">Home</a>
+          <a class="nav-link text-dark" href="/campground">Campground</a>
+          <a class="nav-link text-dark" href="/campground/new">New</a>
           <% if(!user){ %>  
-            <a class="nav-link" href="/login">Sign in</a>
-            <a class="nav-link" href="/register">Register</a>
+            <a class="nav-link btn btn-outline-primary px-4 mx-2" href="/login">Sign in</a>
+            <a class="nav-link btn btn-primary text-light px-4" href="/register">Register</a>
             <% }else{ %>
               <a class="nav-link btn btn-danger text-white mx-4 px-4" href="/logout">Sign out</a>
            <% } %>

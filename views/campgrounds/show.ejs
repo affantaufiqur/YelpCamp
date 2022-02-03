@@ -1,5 +1,5 @@
 <% layout('layouts/boilerplate')%>
-<link rel="stylesheet" href="/style/style.css">
+
 <div class="mb-3">
   <a href="/campground" class="pb-4 text-decoration-none">Back to campground lists</a>
 </div>
@@ -46,7 +46,7 @@
     </div>
     
     <div class="col-6">
-      <div id='map' style='width: 100%; height: 300px;'></div>
+      <div id='map'></div>
       <% if(user) { %>
       <h3 class="mt-4 mb-2">Leave a review</h3>
       <form class="needs-validation" action="/campground/<%= camp._id %>/reviews" method="POST" novalidate>
