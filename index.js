@@ -14,12 +14,15 @@ const passport = require('passport');
 const Local = require('passport-local');
 const User = require('./models/user');
 const mongoSanitize = require('express-mongo-sanitize');
+const MongoStore = require('connect-mongo')
 
 const userRoutes = require('./routes/user')
 const campgroundRoutes = require('./routes/campground')
 const reviewRoutes = require('./routes/review')
 
-mongoose.connect('mongodb://127.0.0.1:27017/yelp-camp')
+const dbUrl = 'mongodb://127.0.0.1:27017/yelp-camp'
+
+mongoose.connect(dbUrl)
 .then(() => {
     console.log('Nice, you are connected')
 })
@@ -44,7 +47,18 @@ app.use(methodOverride('_method'));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(mongoSanitize());
 
+const store = new MongoStore({
+    mongoUrl: dbUrl,
+    secret: 'rnmginbgmxiooe',
+    touchAfter: 24 * 60 * 60
+})
+
+store.on('error', function (err) {
+    console.log(err)
+})
+
 const sessionConfig = {
+    store,
     name: 'session',
     secret: 'rnmginbgmxiooe',
     resave: false,
